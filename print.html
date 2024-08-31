@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title></title>
+        <title>Styx Book</title>
         <meta name="robots" content="noindex">
 
 
@@ -89,7 +89,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="1_welcome.html"><strong aria-hidden="true">1.</strong> The Styx Book</a></li><li class="chapter-item expanded "><a href="2_getting_started.html"><strong aria-hidden="true">2.</strong> Getting started</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="2a_installation.html"><strong aria-hidden="true">2.1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="2b_runners.html"><strong aria-hidden="true">2.2.</strong> Runners</a></li><li class="chapter-item expanded "><a href="2c_tips_best_practices.html"><strong aria-hidden="true">2.3.</strong> Tips & best practices</a></li><li class="chapter-item expanded "><a href="2d_contributing_to_niwrap.html"><strong aria-hidden="true">2.4.</strong> Contributing to NiWrap</a></li></ol></li><li class="chapter-item expanded "><a href="3_getting_started.html"><strong aria-hidden="true">3.</strong> Advanced concepts</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="3a_custom_runners.html"><strong aria-hidden="true">3.1.</strong> Writing custom runners</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="1_welcome.html"><strong aria-hidden="true">1.</strong> The Styx Book</a></li><li class="chapter-item expanded "><a href="2_getting_started.html"><strong aria-hidden="true">2.</strong> Getting started</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="2b_runners.html"><strong aria-hidden="true">2.1.</strong> Runners</a></li><li class="chapter-item expanded "><a href="2c_tips_best_practices.html"><strong aria-hidden="true">2.2.</strong> Tips & best practices</a></li><li class="chapter-item expanded "><a href="2d_contributing_to_niwrap.html"><strong aria-hidden="true">2.3.</strong> Contributing to NiWrap</a></li></ol></li><li class="chapter-item expanded "><a href="3_getting_started.html"><strong aria-hidden="true">3.</strong> Advanced concepts</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="3a_custom_runners.html"><strong aria-hidden="true">3.1.</strong> Writing custom runners</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -142,7 +142,7 @@
                         </button>
                     </div>
 
-                    <h1 class="menu-title"></h1>
+                    <h1 class="menu-title">Styx Book</h1>
 
                     <div class="right-buttons">
                         <a href="print.html" title="Print this book" aria-label="Print this book">
@@ -177,7 +177,35 @@
                         <h1 id="the-styx-book"><a class="header" href="#the-styx-book">The Styx Book</a></h1>
 <p>This book aims to give users wanting to use Styx for the first time or blabla...</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="getting-started"><a class="header" href="#getting-started">Getting started</a></h1>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="installation"><a class="header" href="#installation">Installation</a></h1>
+<blockquote>
+<p>[!NOTE]<br />
+This book uses Styx wrappers from the NiWrap package, but any Styx wrapper will work the same way.</p>
+</blockquote>
+<p>To get started install the <a href="https://github.com/childmindresearch/niwrap/tree/main">NiWrap</a> Python package:</p>
+<pre><code class="language-sh">pip install -e "git+https://github.com/childmindresearch/niwrap.git/#egg=niwrap&amp;subdirectory=python"
+</code></pre>
+<p>From there on running commands will be as easy as:</p>
+<pre><code class="language-Python">from niwrap import fsl
+
+bet_output = fsl.bet(
+    infile="my_file.nii.gz",
+    binary_mask=True,
+)
+</code></pre>
+<p>This runs the command</p>
+<pre><code class="language-sh">bet my_file.nii.gz -m
+</code></pre>
+<p>and stores all the output files for easy access in <code>bet_output</code>.</p>
+<p>These can then be used as an input to another Styx wrapper or with any other Python package like nilearn:</p>
+<pre><code class="language-Python">from nilearn.plotting import plot_anat
+
+plot_anat(bet_output.outfile)
+</code></pre>
+<blockquote>
+<p>[!TIP]<br />
+Styx includes detailed documentation about every command, argument, and output file. You should be able to just hover over any of them in your editor to view its documentation.</p>
+</blockquote>
+<p>The next chapter will explain how to use <em>Runners</em> to control how the commands get executed and intermediate files get stored.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="runners"><a class="header" href="#runners">Runners</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="tips--best-practices"><a class="header" href="#tips--best-practices">Tips &amp; best practices</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="contributing-to-niwrap"><a class="header" href="#contributing-to-niwrap">Contributing to NiWrap</a></h1>
